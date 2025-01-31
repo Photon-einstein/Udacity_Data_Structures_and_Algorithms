@@ -12,7 +12,8 @@ The time efficiency of this solution is $O(n1 + n2)$ where n1 and n2
 are the sizes of the linked list 1 and 2 respectively.
 
 ### Space Efficiency:
-The space efficiency if this solution of this solution is $O(n1 + n2)$ where n1 and n2  are the sizes of the linked list 1 and 2 respectively  
+The space efficiency if this solution of this solution is $O(n1 + n2)$  
+where n1 and n2  are the sizes of the linked list 1 and 2 respectively    
 considering the worst case scenario of all the elements in each list  
 being unique.
 
