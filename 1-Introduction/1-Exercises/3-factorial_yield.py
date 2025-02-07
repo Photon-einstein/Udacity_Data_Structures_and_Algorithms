@@ -1,7 +1,8 @@
-def prod(a,b):
+def prod(a, b):
     # TODO change output to the product of a and b
     output = a * b
     return output
+
 
 def fact_gen():
     i = 1
