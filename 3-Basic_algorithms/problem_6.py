@@ -25,7 +25,7 @@ def get_min_max(ints: list[int]) -> Optional[tuple[int, int]]:
     Optional[tuple[int, int]]: A tuple containing the minimum and maximum
     integer, or None if the list is empty
     """
-    if len(ints) == 0:
+    if ints == None or len(ints) == 0:
         return None
     min = None
     max = None
@@ -48,24 +48,30 @@ if __name__ == "__main__":
     print("Test 1: Empty input list pass\n")
     # Expected output: None
 
+    # Edge case: Input list null
+    res = get_min_max(None)
+    print(res)
+    assert res == None
+    print("Test 2: Input list null pass\n")
+    # Expected output: None
+
     # Normal case: list with negative and positive numbers
     res = get_min_max([-10, 0, 10, -20, 20])
     print(res)
     assert res == tuple[-20, 20]
-    print("Test 2: List with negative and positive numbers pass\n")
+    print("Test 3: List with negative and positive numbers pass\n")
     # Expected output: (-20, 20)
 
     # Normal case: list with large range of numbers
     res = get_min_max([1000, -1000, 500, -500, 0])
     print(res)
     assert res == tuple[-1000, 1000]
-    print("Test 3: List with large range of numbers pass\n")
+    print("Test 4: List with large range of numbers pass\n")
     # Expected output: (-1000, 1000)
 
     # Normal case: list with already sorted numbers
     res = get_min_max([1, 2, 3, 4, 5])
     print(res)
     assert res == tuple[1, 5]
-    print("Test 4: List with already sorted numbers pass\n")
-    print(get_min_max([1, 2, 3, 4, 5]))
+    print("Test 5: List with already sorted numbers pass")
     # Expected output: (1, 5)

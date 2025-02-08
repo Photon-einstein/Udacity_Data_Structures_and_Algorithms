@@ -113,7 +113,7 @@ assert "onym" in suffixes_list
 print("\nTest 2: 'ant' input pass\n")
 # Expected output: True
 
-# Test case: Word present in the Trie, no suffixes
+# Normal case: Word present in the Trie, no suffixes
 prefixNode = MyTrie.find("function")
 print("\n".join(prefixNode.suffixes())) if prefixNode else print(prefixNode)
 suffixes_list = prefixNode.suffixes()

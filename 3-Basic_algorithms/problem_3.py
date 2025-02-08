@@ -116,6 +116,10 @@ if __name__ == "__main__":
     test_function(([9], [9, 0]))
     # Expected output: Pass
 
+    # Edge case: list with no numbers
+    test_function(([], []))
+    # Expected output: Pass
+
     # Normal case: Mixed positive and negative numbers
     test_function(([1, 2, 3, 4, 5], [542, 31]))
     # Expected output: Pass
@@ -126,8 +130,4 @@ if __name__ == "__main__":
 
     # Normal case: list with repeated numbers
     test_function(([2, 2, 2, 2, 2], [222, 22]))
-    # Expected output: Pass
-
-    # Edge case: list with no numbers
-    test_function(([], []))
     # Expected output: Pass

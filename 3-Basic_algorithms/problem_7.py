@@ -186,33 +186,33 @@ if __name__ == "__main__":
     print("--------------------------------->Test 1 passed\n")
     # Expected output: 'Should print 'root handler'
 
-    # Normal case: Path not found
-    print("Test 2: Normal case path not found")
-    handler = router.lookup("/home/contact")
+    # Edge case: Path not found
+    print("Test 2: Edge case handler not found")
+    handler = router.lookup("/home/")
     print(handler)
     assert handler == "not found handler"
     print("--------------------------------->Test 2 passed\n")
-    # Expected output: 'not found handler'
 
-    # Normal case: Path with multiple segments
-    print("Test 3: Normal case path with multiple segments")
-    handler = router.lookup("/home/about/me")
+    # Normal case: Path not found
+    print("Test 3: Normal case path not found")
+    handler = router.lookup("/home/contact")
     print(handler)
     assert handler == "not found handler"
     print("--------------------------------->Test 3 passed\n")
     # Expected output: 'not found handler'
 
+    # Normal case: Path with multiple segments
+    print("Test 4: Normal case path with multiple segments")
+    handler = router.lookup("/home/about/me")
+    print(handler)
+    assert handler == "not found handler"
+    print("--------------------------------->Test 4 passed\n")
+    # Expected output: 'not found handler'
+
     # Normal case: Path with exact match
-    print("Test 4: Path with exact match")
+    print("Test 5: Path with exact match")
     handler = router.lookup("/home/about")
     print(handler)
     assert handler == "about handler"
-    print("--------------------------------->Test 4 passed\n")
-    # Expected output: 'about handler'
-
-    # Edge case: Path not found
-    print("Test 5: Edge case handler not found")
-    handler = router.lookup("/home/")
-    print(handler)
-    assert handler == "not found handler"
     print("--------------------------------->Test 5 passed\n")
+    # Expected output: 'about handler'

@@ -26,7 +26,7 @@ def rotated_array_search(input_list: list[int], number: int) -> int:
     Returns:
     int: Index of the target number or -1 if not found
     """
-    if len(input_list) == 0:
+    if input_list == None or len(input_list) == 0:
         return -1
     return binarySearch(input_list, 0, len(input_list) - 1, number)
 
@@ -97,6 +97,8 @@ def linear_search(input_list: list[int], number: int) -> int:
     Returns:
     int: The index of the target number if found, otherwise -1.
     """
+    if input_list == None:
+        return -1
     for index, element in enumerate(input_list):
         if element == number:
             return index
@@ -106,6 +108,10 @@ def linear_search(input_list: list[int], number: int) -> int:
 if __name__ == "__main__":
     # Edge case: Empty input list
     test_function([[], 5])
+    # Expected output: Pass
+
+    # Edge case: Input list null
+    test_function([None, 10])
     # Expected output: Pass
 
     # Normal case: Number at the beginning of the list

@@ -71,6 +71,14 @@ if __name__ == "__main__":
     test_function([[]])
     # Expected output: Pass
 
+    # Edge case: All 1's
+    test_function([[1, 1, 1, 1, 1, 1]])
+    # Expected output: Pass
+
+    # Edge case: All 2's
+    test_function([[2, 2, 2, 2, 2, 2]])
+    # Expected output: Pass
+
     # Normal case: Mixed elements
     test_function([[0, 1, 2, 0, 1, 2]])
     # Expected output: Pass
@@ -85,12 +93,4 @@ if __name__ == "__main__":
 
     # Edge case: All 0's
     test_function([[0, 0, 0, 0, 0, 0]])
-    # Expected output: Pass
-
-    # Edge case: All 1's
-    test_function([[1, 1, 1, 1, 1, 1]])
-    # Expected output: Pass
-
-    # Edge case: All 2's
-    test_function([[2, 2, 2, 2, 2, 2]])
     # Expected output: Pass
