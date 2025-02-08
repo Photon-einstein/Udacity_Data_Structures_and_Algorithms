@@ -65,9 +65,9 @@ class RouteTrie:
         handler (str): The handler for the route.
         """
         trienode = self.root
-        for i in range(len(path_parts)):
+        for i in range(len(path_parts)):  # O(n)
             path = path_parts[i]
-            if path not in trienode.children.keys():
+            if path not in trienode.children.keys():  # O(1)
                 trienode.children[path] = RouteTrieNode()
             if i == len(path_parts) - 1:
                 trienode.children[path].handler = handler
@@ -84,8 +84,8 @@ class RouteTrie:
         str or None: The handler for the route if found, otherwise None.
         """
         node = self.root
-        for path in path_parts:
-            if path in node.children.keys():
+        for path in path_parts:  # O(n)
+            if path in node.children.keys():  # O(1)
                 node = node.children[path]
             else:
                 return None
@@ -129,9 +129,9 @@ class Router:
         path (str): The route path.
         handler (str): The handler for the route.
         """
-        path_clean = self.clean_path(path)
-        route_path = self.split_path(path_clean)
-        self.root.insert(route_path, handler)
+        path_clean = self.clean_path(path)  # O(1)
+        route_path = self.split_path(path_clean)  # O(n)
+        self.root.insert(route_path, handler)  # O(n)
 
     def lookup(self, path: str) -> str:
         """
@@ -143,11 +143,11 @@ class Router:
         Returns:
         str: The handler for the route if found, otherwise the not-found handler.
         """
-        path_clean = self.clean_path(path)
+        path_clean = self.clean_path(path)  # O(1)
         if path_clean == "/":
             return self.root_handler
-        route_path = self.split_path(path_clean)
-        handler = self.root.find(route_path)
+        route_path = self.split_path(path_clean)  # O(n)
+        handler = self.root.find(route_path)  # O(n)
 
         if handler == None:
             return self.not_found_handler
@@ -164,9 +164,9 @@ class Router:
         Returns:
             List[str]: A list of parts of the path.
         """
-        parts_bulk = path.split("/")
+        parts_bulk = path.split("/")  # O(n)
         parts = list()
-        for el in parts_bulk:
+        for el in parts_bulk:  # O(n)
             if el:
                 parts.append(el)
         print(parts)
