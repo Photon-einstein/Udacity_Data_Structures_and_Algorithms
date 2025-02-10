@@ -28,7 +28,7 @@ The method suffixes of the TrieNode performs a depth first of
 the Trie, starting from the current node, it will collect  
 recursively all the child nodes, bellow the current node.  
 In terms of the time complexity, it will be $O(n)$, where n  
-is the total number of characters bellow the current node.
+is the total number of characters bellow the current node.  
 In terms of space complexity it will also be $O(n)$ as there  
 will be a storage of each character bellow the current node.  
 
@@ -45,7 +45,7 @@ the worst case scenario, all the characters are not in
 the Trie, so it will be $O(n)$ where n is the length of  
 the word to be inserted in the Trie.
 
-The method find of the Trie will start in the root of the Trie,
+The method find of the Trie will start in the root of the Trie,  
 and it will traverse each character in the prefix to be found,  
 if all the characters are present in the right sequence,  
 starting in the root then it will return the TrieNode of  

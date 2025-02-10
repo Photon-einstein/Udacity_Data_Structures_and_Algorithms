@@ -14,7 +14,7 @@ formulas in markdown, refer to https://docs.github.com/en/get-started/writing-on
 This solution will in one single list traversal, check if each element  
 is greater than the current maximum or less that the current minimum,  
 if yes then the values will be updated. The first value of the list  
-initializes the min and max values.
+initializes the min and max values.  
 The time complexity of this solution is thus $O(n)$ where n is the  
 length of the list. The space complexity of this solution is $O(1)$  
 as the same memory is always used, independent of the length of the list.
