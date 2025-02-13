@@ -85,7 +85,6 @@ def dijkstra(graph, source):
 
     return result
 
-
 # Test 1
 testGraph = Graph()
 for node in ["A", "B", "C", "D", "E"]:
