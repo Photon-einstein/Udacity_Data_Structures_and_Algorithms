@@ -55,7 +55,23 @@ for each in graph1.nodes:
 
 '''TO DO'''
 def dfs_recursion_start(start_node, search_value):
-    pass
+    if start_node.value == search_value:
+        return start_node
+    visited = [start_node]
+    for child in start_node.children:
+        return dfs_recursion(child, search_value, visited)
+    return None
+
+def dfs_recursion(start_node, search_value, visited):
+    if start_node.value == search_value:
+        return start_node
+    visited.append(start_node)
+    for child in start_node.children:
+        if child not in visited:
+            result =  dfs_recursion(child, search_value, visited)
+            if result is not None:
+                return result
+    return None
 
 assert nodeA == dfs_recursion_start(nodeG, 'A')
 assert nodeA == dfs_recursion_start(nodeS, 'A')
