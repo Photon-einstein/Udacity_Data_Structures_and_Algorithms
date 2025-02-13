@@ -6,7 +6,7 @@ import sys
 class Graph:
     def __init__(self):
         self.nodes = set()  # A set cannot contain duplicate nodes
-        self.neighbours = defaultdict(
+        self.neighbors = defaultdict(
             list
         )  # Defaultdict is a child class of Dictionary that provides a default value for a key that does not exists.
         self.distances = (
@@ -17,8 +17,8 @@ class Graph:
         self.nodes.add(value)
 
     def add_edge(self, from_node, to_node, distance):
-        self.neighbours[from_node].append(to_node)
-        self.neighbours[to_node].append(from_node)
+        self.neighbors[from_node].append(to_node)
+        self.neighbors[to_node].append(from_node)
         self.distances[(from_node, to_node)] = distance
         self.distances[(to_node, from_node)] = (
             distance  # lets make the graph undirected / bidirectional
@@ -26,41 +26,64 @@ class Graph:
 
     def print_graph(self):
         print("Set of Nodes are: ", self.nodes)
-        print("Neighbours are: ", self.neighbours)
+        print("Neighbors are: ", self.neighbors)
         print("Distances are: ", self.distances)
 
 
 """ TO DO: Find the shortest path from the source node to every other node in the given graph """
 
 
+'''Find the shortest path from the source node to every other node in the given graph'''
 def dijkstra(graph, source):
-    # Declare and initialize result, unvisited, and path
+    
+    result = {}
+    result[source] = 0                 
+    
+    for node in graph.nodes:
+        if (node != source):
+            result[node] = sys.maxsize
+            
+    unvisited = set(graph.nodes)  
+    
+    path = {}
+
+    '''THE GREEDY APPROACH'''
     # As long as unvisited is non-empty
-    unvisited = graph.neighbors[source]
-    result = None
-    while len(unvisited):
+    while unvisited: 
+        min_node = None    
+        
         # 1. Find the unvisited node having smallest known distance from the source node.
-        unvisited_node = find_min_distance_unvisited_node(graph, source)
-        # 2. For the current node, find all the unvisited neighbors. For this, you have calculate the distance of each unvisited neighbor.
+        for node in unvisited:
+            if node in result:
+                
+                if min_node is None:       
+                    min_node = node
+                elif result[node] < result[min_node]:
+                    min_node = node
 
-        # 3. If the calculated distance of the unvisited neighbor is less than the already known distance in result dictionary, update the shortest distance in the result dictionary.
+        if min_node is None:
+            break
+            
+        # known distance of min_node
+        current_distance = result[min_node]
+        
+        # 2. For the current node, find all the unvisited neighbors. 
+        # For this, you have calculate the distance of each unvisited neighbor.
+        for neighbor in graph.neighbors[min_node]:
+            if neighbor in unvisited:
+                distance = current_distance + graph.distances[(min_node, neighbor)]
+            
+                # 3. If the calculated distance of the unvisited neighbor is less than the already known distance in result dictionary, update the shortest distance in the result dictionary.
+                if ((neighbor not in result) or (distance < result[neighbor])):
+                    result[neighbor] = distance
 
-        # 4. If there is an update in the result dictionary, you need to update the path dictionary as well for the same key.
-
+                    # 4. If there is an update in the result dictionary, you need to update the path dictionary as well for the same key.
+                    path[neighbor] = min_node
+        
         # 5. Remove the current node from the unvisited set.
-        unvisited.remove(unvisited_node)
+        unvisited.remove(min_node)
 
     return result
-
-
-def find_min_distance_unvisited_node(graph: Graph, source_node):
-    min_node = None
-    min_distance = sys.maxsize
-    for to_node in graph.neighbors[source_node]:
-        if graph.distances[(source_node, to_node)] < min_distance:
-            min_node = to_node
-            min_distance = graph.distances[(source_node, to_node)]
-    return min_node
 
 
 # Test 1
