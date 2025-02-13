@@ -19,7 +19,6 @@ def min_operations(target):
     return num_steps
 
 # Test Cases
-
 def test_function(test_case):
     target = test_case[0]
     solution = test_case[1]
