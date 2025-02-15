@@ -41,7 +41,16 @@ graph1.add_edge(nodeH,nodeP)
 graph1.add_edge(nodeS,nodeR)
 
 def bfs_search(root_node, search_value):
-    pass
+    visited = set()
+    queue = [root_node]
+    while len(queue) > 0:
+        current_node = queue.pop(0)
+        visited.add(current_node)
+        if current_node.value == search_value:
+            return current_node
+        for child in current_node.children:
+            if (child not in visited) and (child not in queue):
+                queue.append(child)
 
 assert nodeA == bfs_search(nodeS, 'A')
 assert nodeS == bfs_search(nodeP, 'S')
