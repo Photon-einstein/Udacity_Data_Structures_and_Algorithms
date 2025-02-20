@@ -4,9 +4,13 @@ def lcs(string_a, string_b):
     nRows = len(string_a) + 1
     nColumns = len(string_b) + 1
     matrix = np.zeros((nRows, nColumns))
-    
-    pass
-
+    for row in range(1, len(string_a)+1):
+        for column in range(1, len(string_b)+1):
+            if string_a[row-1] == string_b[column-1]:
+                matrix[row][column] = matrix[row-1][column-1] + 1
+            else:
+                matrix[row][column] = max(matrix[row][column-1], matrix[row-1][column]) 
+    return matrix[-1][-1]
 
 ## Test cell
 
