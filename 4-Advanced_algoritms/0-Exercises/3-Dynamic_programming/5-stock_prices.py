@@ -1,14 +1,29 @@
 def max_returns(prices):
     """
-    Calculate maxiumum possible return
+    Calculate maximum possible return
     
     Args:
        prices(array): array of prices
     Returns:
        int: The maximum profit possible
     """
-    
-    return prices
+    min_price_index = 0
+    max_price_index = 1
+    current_min_price_index = 0
+
+    if len(prices) < 2:
+        return
+
+    for index in range(1, len(prices)):
+        if prices[index] < prices[current_min_price_index]:
+            current_min_price_index = index
+        
+        if prices[max_price_index] - prices[min_price_index] < prices[index] - prices[current_min_price_index]:
+            max_price_index = index
+            min_price_index = current_min_price_index
+
+    maxProfit = prices[max_price_index] - prices[min_price_index]
+    return maxProfit
 
 # Test Cases
 def test_function(test_case):
