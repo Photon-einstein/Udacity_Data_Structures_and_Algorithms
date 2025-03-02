@@ -18,3 +18,7 @@ This project consists of facing several problems using basic algorithms and prov
 
 ## 4. Advanced Algorithms
 This project consists of implementing the A* algorithm inside a route planner project.
+
+## Certificate of completion
+
+[Certificate of graduation](https://www.udacity.com/certificate/e/b84fb148-bbb0-11ef-a22c-539158200a48)
