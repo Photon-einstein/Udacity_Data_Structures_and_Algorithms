@@ -12,3 +12,9 @@ The analysis of run time complexity of the solutions is also included here as we
 This project consists of facing several problems using suitable data structures so that the time and space complexity of  
 the solutions can be of hight standards. Several test cases were also created to ensure the proper correctness of the code.
 Space and time complexity analysis reasoning was also provided for each problem.
+
+## 3. Basic Algorithms
+This project consists of facing several problems using basic algorithms and providing time and space complexity analysis.
+
+## 4. Advanced Algorithms
+This project consists of implementing the A* algorithm inside a route planner project.
